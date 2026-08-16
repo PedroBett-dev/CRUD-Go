@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 
+	"github.com/PedroBett-dev/CRUD-Go.git/src/configuration/database"
+	"github.com/PedroBett-dev/CRUD-Go.git/src/controller"
 	"github.com/PedroBett-dev/CRUD-Go.git/src/controller/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -10,10 +12,17 @@ import (
 
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Load Error: .env file")
+	if err := godotenv.Load(); err != nil {
+		log.Println("Warning: .env file not found, using environment variables")
 	}
+
+	pool, err := database.NewConnection()
+	if err != nil {
+		log.Fatalf("Error trying to connect to database: %s", err.Error())
+	}
+	defer pool.Close()
+
+	controller.InitRepository(pool)
 
 	router := gin.Default()
 
