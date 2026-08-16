@@ -22,13 +22,14 @@ A tabela `users` é criada automaticamente pelo `db/init.sql` na primeira subida
 
 ## Endpoints
 
-| Método | Rota                     | Descrição           |
-|--------|--------------------------|---------------------|
-| POST   | `/createUser`            | Cria um usuário     |
-| GET    | `/getUserByID/:userId`   | Busca por ID (UUID) |
-| GET    | `/getUserByEmail/:email` | Busca por email     |
-| PUT    | `/updateUser?userId=:id` | Atualiza usuário    |
-| DELETE | `/deleteUser/:UserId`    | Deleta usuário      |
+| Método | Rota                     | Descrição                   |
+|--------|--------------------------|-----------------------------|
+| POST   | `/createUser`            | Cria um usuário             |
+| GET    | `/listAllUsers`          | Busca por todos os usuarios |
+| GET    | `/getUserByID/:userId`   | Busca por ID (UUID)         |
+| GET    | `/getUserByEmail/:email` | Busca por email             |
+| PUT    | `/updateUser?userId=:id` | Atualiza usuário            |
+| DELETE | `/deleteUser/:UserId`    | Deleta usuário              |
 
 Exemplo de corpo para POST/PUT:
 ```json
